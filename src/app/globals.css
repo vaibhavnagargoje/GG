@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #515151;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: white !important; /* Force white background */
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  animation: dropdownIn 0.2s ease-out;
+}
+
+@keyframes floatPetal {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.petal-hover:hover {
+  animation: floatPetal 1s ease-in-out infinite;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.page-enter {
+  animation: zoomIn 0.5s ease-out;
+}
+
+.movies-swiper {
+  padding: 20px 0 40px;
+}
+
+.movies-swiper .swiper-slide {
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.movies-swiper .swiper-slide-active {
+  opacity: 1;
+}
+
+.movies-swiper .swiper-button-next,
+.movies-swiper .swiper-button-prev {
+  color: #9B2C2C;
+}
+
+.movies-swiper .swiper-pagination-bullet-active {
+  background: #9B2C2C;
+}
+
+@keyframes turnPageRight {
+  0% {
+    transform: perspective(1000px) rotateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(-180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes turnPageLeft {
+  0% {
+    transform: perspective(1000px) rotateY(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mobile menu animations */
+.mobile-menu {
+  animation: slideDown 0.3s ease-out;
+}
+
+.mobile-submenu {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  /* Navigation elements */
+  nav {
+    @apply font-inter;
+  }
+  a {
+    @apply font-inter;
+  }
+  
+  /* All headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-philosopher;
+  }
+
+  /* All paragraph text */
+  p {
+    @apply font-crimson-pro;
+  }
+  button{
+    @apply font-inter
+  }
+  footer{
+    @apply font-inter
+  }
+  span{
+    @apply font-philosopher
+  }
+
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 10s ease-in-out infinite;
+}
+
+/* Add these styles for layout management */
+.page-wrapper {
+  background: white;
+  min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content-wrapper {
+  flex: 1 0 auto;
+  min-height: 0; /* This helps prevent content from pushing footer down */
+}
+
+/* Update main element styles */
+main {
+  flex: 1;
+  background: white;
+  padding-top: 100px !important;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add minimum height for resource sections */
+.resources-content {
+  min-height: 600px; /* Minimum height for resources content */
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    min-height: calc(100vh - 120px - 200px);
+  }
+}
+
+/* Navbar specific styles */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  width: 100%;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer styles */
+footer {
+  flex-shrink: 0; /* Prevents footer from shrinking */
+}
+
+/* Resources viewer container styles */
+.resources-viewer-container {
+  min-height: 800px; /* Adjust this value based on your needs */
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure flipbook wrapper maintains consistent height */
+#flipbook-wrapper {
+  min-height: 700px; /* Match the height in your component */
+}

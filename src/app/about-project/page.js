@@ -190,7 +190,7 @@ function AboutProjectContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <div className="relative aspect-[3/3] w-full">
                 <Image
-                  src={aboutData.logo_detail_image || "/images/Knowledge & Learning.png"}
+                  src={aboutData.logo_detail_image || "/images/Knowledge_Learning.png"}
                   alt="Logo Details"
                   fill
                   className="object-contain rounded-lg"
